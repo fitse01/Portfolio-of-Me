@@ -60,10 +60,10 @@ export function Footer() {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-foreground/60">
           <p>&copy; {currentYear} Full-Stack Developer. All rights reserved.</p>
-          <div className="flex gap-6">
+          {/* <div className="flex gap-6">
             <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

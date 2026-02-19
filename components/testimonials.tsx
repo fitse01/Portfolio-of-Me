@@ -6,21 +6,21 @@ const testimonials = [
   {
     id: 1,
     quote: "Exceptional developer with a keen eye for detail. Built our telemedicine platform from scratch with incredible attention to security and scalability. A true problem-solver.",
-    author: "Dr. Aris T.",
-    role: "CEO at Xyber Labs",
+    author: "Kiya Kebe",
+    role: "Cofounder @ Motion Digitals",
     rating: 5
   },
   {
     id: 2,
     quote: "The technical expertise and project management skills are outstanding. Delivered the travel platform on time and exceeded our expectations in every way.",
-    author: "Sarah M.",
-    role: "Founder at Imaltu",
+    author: "Bereket Wolde.",
+    role: "Founder at Tigat Tech",
     rating: 5
   },
   {
     id: 3,
     quote: "Working with this developer transformed our entire product. The code quality, architecture decisions, and willingness to mentor the team made a huge difference.",
-    author: "James K.",
+    author: "Henok Assefa.",
     role: "CTO at Motion Digitals",
     rating: 5
   }

@@ -1,38 +1,35 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Linkedin, Github, Twitter } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
+    service: '',
     message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
     try {
-      // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1000));
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', service: '', message: '' });
       setTimeout(() => setSubmitStatus('idle'), 3000);
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
       setTimeout(() => setSubmitStatus('idle'), 3000);
     } finally {
@@ -40,196 +37,164 @@ export function Contact() {
     }
   };
 
-  const contactInfo = [
+  const socialLinks = [
     {
-      icon: Mail,
-      label: 'Email',
-      value: 'hello@example.com',
-      href: 'mailto:hello@example.com'
+      platform: 'X',
+      handle: '@fitse01',
+      href: 'https://twitter.com/fitse01',
     },
     {
-      icon: Phone,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567'
+      platform: 'LinkedIn',
+      handle: '@fitsum-tafese',
+      href: 'https://www.linkedin.com/in/fitsum-tafese-b2791a279/',
     },
     {
-      icon: MapPin,
-      label: 'Location',
-      value: 'San Francisco, CA',
-      href: '#'
-    }
+      platform: 'GitHub',
+      handle: '@fitse01',
+      href: 'https://github.com/fitse01',
+    },
+    {
+      platform: 'Telegram',
+      handle: '@Fafina21',
+      href: 'https://t.me/Fafina21',
+    },
   ];
 
-  const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Twitter, href: '#', label: 'Twitter' }
-  ];
+  const inputBase =
+    'w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-white/30 transition-colors';
 
   return (
     <section id="contact" className="py-20 bg-background">
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
-        <div className="space-y-12">
-          <div className="space-y-4 text-center">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground text-pretty">Get In Touch</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have a project in mind? Let's collaborate and create something amazing together.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            {contactInfo.map((info) => {
-              const Icon = info.icon;
-              return (
-                <a
-                  key={info.label}
-                  href={info.href}
-                  className="group p-6 rounded-xl bg-secondary border border-accent/20 hover:border-accent/40 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10"
+        {/* Heading */}
+        <div className="mb-14">
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Let&apos;s work together
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-xl">
+            Have a project in mind? I&apos;d love to hear about it and discuss how we can bring
+            your ideas to life.
+          </p>
+        </div>
+
+        {/* Two-column layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+          {/* LEFT — Contact Form */}
+          <div className="border border-white/10 rounded-2xl p-8 bg-white/[0.02]">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Full name"
+                className={inputBase}
+              />
+
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="Email address"
+                className={inputBase}
+              />
+
+              {/* Service select */}
+              <div className="relative">
+                <select
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  className={`${inputBase} appearance-none pr-10 cursor-pointer ${
+                    formData.service === '' ? 'text-muted-foreground/50' : 'text-foreground'
+                  }`}
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
-                      <Icon className="w-6 h-6 text-accent" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-1">{info.label}</p>
-                      <p className="text-foreground font-semibold group-hover:text-accent transition-colors">
-                        {info.value}
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="space-y-6">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-accent/20 text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/50 transition-all"
-                    placeholder="Your name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-accent/20 text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/50 transition-all"
-                    placeholder="your@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-accent/20 text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/50 transition-all"
-                    placeholder="Project discussion"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-accent/20 text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/50 transition-all resize-none"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full px-6 py-3 bg-accent text-background font-semibold rounded-lg hover:opacity-90 disabled:opacity-50 transition-opacity flex items-center justify-center gap-2"
-                >
-                  <Send className="w-5 h-5" />
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
-
-                {submitStatus === 'success' && (
-                  <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400">
-                    Message sent successfully! I'll get back to you soon.
-                  </div>
-                )}
-
-                {submitStatus === 'error' && (
-                  <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400">
-                    Failed to send message. Please try again.
-                  </div>
-                )}
-              </form>
-            </div>
-
-            {/* Contact Info & Social */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">Let's Connect</h3>
-                <p className="text-muted-foreground mb-6">
-                  I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to get in touch!
-                </p>
-                <div className="space-y-4">
-                  <p className="text-foreground">
-                    <span className="font-semibold">Response Time:</span> Usually within 24 hours
-                  </p>
-                  <p className="text-foreground">
-                    <span className="font-semibold">Availability:</span> Available for freelance and full-time projects
-                  </p>
-                  <p className="text-foreground">
-                    <span className="font-semibold">Services:</span> Web Development, Mobile Apps, UI/UX Design, Consulting
-                  </p>
+                  <option value="" disabled hidden>Select a service</option>
+                  <option value="web">Web Development</option>
+                  <option value="mobile">Mobile App</option>
+                  <option value="ui">UI/UX Design</option>
+                  <option value="consulting">Consulting</option>
+                </select>
+                {/* Chevron icon */}
+                <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/50">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
               </div>
 
-              <div>
-                <h3 className="text-xl font-bold text-foreground mb-4">Follow Me</h3>
-                <div className="flex gap-4">
-                  {socialLinks.map((link) => {
-                    const SocialIcon = link.icon;
-                    return (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        className="p-3 rounded-lg bg-secondary border border-accent/20 hover:border-accent/50 hover:bg-accent/10 transition-all duration-300 group"
-                      >
-                        <SocialIcon className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
-                      </a>
-                    );
-                  })}
-                </div>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={5}
+                placeholder="Tell me about your project..."
+                className={`${inputBase} resize-none`}
+              />
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 text-foreground text-sm font-medium transition-all duration-300 disabled:opacity-50"
+              >
+                {isSubmitting ? 'Sending…' : 'Send Message'}
+              </button>
+
+              {submitStatus === 'success' && (
+                <p className="text-green-400 text-sm">
+                  Message sent! I&apos;ll get back to you soon.
+                </p>
+              )}
+              {submitStatus === 'error' && (
+                <p className="text-red-400 text-sm">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+            </form>
+          </div>
+
+          {/* RIGHT — Email + Social grid */}
+          <div className="flex flex-col gap-10">
+
+            {/* Clickable email */}
+            <a
+              href="mailto:fitsumtafese01@gmail.com"
+              className="group inline-flex items-center gap-3 text-foreground text-xl font-semibold hover:text-accent transition-colors"
+            >
+              <span>fitsumtafese01@gmail.com</span>
+              <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all duration-300" />
+            </a>
+
+            {/* Elsewhere label */}
+            <div>
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-[0.18em] mb-4">
+                Elsewhere
+              </p>
+
+              {/* 2×2 social grid */}
+              <div className="grid grid-cols-2 gap-3">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.platform}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col gap-1 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.07] hover:border-white/20 px-5 py-4 transition-all duration-300"
+                  >
+                    <span className="text-sm font-semibold text-foreground group-hover:text-accent transition-colors">
+                      {link.platform}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {link.handle}
+                    </span>
+                  </a>
+                ))}
               </div>
             </div>
           </div>

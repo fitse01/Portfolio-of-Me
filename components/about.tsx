@@ -24,16 +24,16 @@ export function About() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
               <div className="p-6 rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-background">
-                <div className="text-3xl font-bold text-accent mb-2">10+</div>
+                <div className="text-3xl font-bold text-accent mb-2">4+</div>
                 <p className="text-foreground/70">Years in Development</p>
               </div>
               <div className="p-6 rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-background">
-                <div className="text-3xl font-bold text-accent mb-2">50+</div>
+                <div className="text-3xl font-bold text-accent mb-2">30+</div>
                 <p className="text-foreground/70">Projects Completed</p>
               </div>
               <div className="p-6 rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-background">
-                <div className="text-3xl font-bold text-accent mb-2">15+</div>
-                <p className="text-foreground/70">Technologies Mastered</p>
+                <div className="text-3xl font-bold text-accent mb-2">10+</div>
+                <p className="text-foreground/70">Client Satisfied</p>
               </div>
             </div>
           </div>

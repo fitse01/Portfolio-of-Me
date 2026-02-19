@@ -7,25 +7,25 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Full-Stack Developer Portfolio | TypeScript & React',
+  title: 'Full-Stack Developer | TypeScript & React',
   description: 'Professional full-stack developer specializing in TypeScript, React, and Node.js. Building scalable, secure web applications.',
   generator: 'v0.app',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/fitse.JPG',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/fitse.JPG',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: '/fitse.JPG',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/fitse.JPG',
   },
 }
 

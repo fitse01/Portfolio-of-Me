@@ -37,7 +37,7 @@ export function Hero() {
 
           <div className="flex gap-8 pt-4 text-sm">
             <div>
-              <p className="text-2xl font-bold text-accent">5+</p>
+              <p className="text-2xl font-bold text-accent">4+</p>
               <p className="text-muted-foreground">Years Experience</p>
             </div>
             <div>
@@ -57,7 +57,7 @@ export function Hero() {
             {/* Image container */}
             <div className="relative w-full h-full rounded-2xl overflow-hidden bg-secondary shadow-2xl">
               <Image
-                src="/developer-hero.jpg"
+                src="/fitse.JPG"
                 alt="Professional developer"
                 fill
                 className="object-cover"

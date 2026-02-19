@@ -20,9 +20,9 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
-              <span className="text-background font-bold">FD</span>
+              <span className="text-background font-bold">FT</span>
             </div>
-            <span className="font-bold text-foreground text-lg hidden sm:inline">FullStack</span>
+            <span className="font-bold text-foreground text-lg hidden sm:inline">FitsumTafese</span>
           </div>
 
           {/* Desktop Links */}

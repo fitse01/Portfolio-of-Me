@@ -5,7 +5,7 @@ const experiences = [
     id: 1,
     period: 'Jul 2025 — Present',
     role: 'Co-Founder & Software Engineer',
-    company: 'Motion Digitals',
+    company: 'Tigat Tech',
     description: 'Leading product development and technical architecture for a digital innovation lab. Building scalable solutions and mentoring engineering teams.',
     highlights: ['Technical Leadership', 'Product Strategy', 'Team Building']
   },
@@ -13,7 +13,7 @@ const experiences = [
     id: 2,
     period: 'Dec 2024 — Jun 2025',
     role: 'Full Stack & Mobile Developer',
-    company: 'Xyber Labs',
+    company: 'Evangadi Tech',
     description: 'Developed full-stack applications using TypeScript, React, and Node.js. Implemented mobile solutions with React Native for cross-platform deployment.',
     highlights: ['Full Stack Development', 'Mobile Development', 'API Design']
   }
