@@ -13,13 +13,16 @@ export function About() {
 
           <div className="space-y-6">
             <p className="text-lg text-foreground/70 leading-relaxed">
-              I'm a passionate full-stack developer with a deep commitment to
-              building products that solve real-world problems. With expertise
-              spanning TypeScript, React, Node.js, and mobile development, I
-              transform complex ideas into elegant, scalable solutions.
+              I am a Full-Stack Developer dedicated to building scalable
+              products that solve real-world problems. With expertise in
+              TypeScript, React, and Node.js, I combine technical rigor with a
+              deep understanding of user needs to transform complex ideas into
+              high-impact solutions. I thrive at the intersection of clean
+              architecture and elegant design, always striving to deliver
+              software that creates meaningful value.
             </p>
 
-            <p className="text-lg text-foreground/70 leading-relaxed">
+            {/* <p className="text-lg text-foreground/70 leading-relaxed">
               My journey in software engineering has been driven by a love for
               clean code, user-centric design, and continuous learning. I thrive
               in collaborative environments where innovation meets execution,
@@ -33,7 +36,7 @@ export function About() {
               development. I believe that great software is built when technical
               excellence meets thoughtful design and a deep understanding of
               user needs.
-            </p>
+            </p> */}
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
               <div className="p-6 rounded-xl border border-accent/20 bg-gradient-to-br from-accent/5 to-background">
