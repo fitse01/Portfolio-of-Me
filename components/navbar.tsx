@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { label: 'Home', href: '#' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Contact', href: '#contact' }
+    { label: "Home", href: "#" },
+    { label: "Projects", href: "#projects" },
+    { label: "Skills", href: "#skills" },
+    { label: "Contact", href: "#contact" },
   ];
 
   return (
@@ -20,9 +20,11 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
-              <span className="text-background font-bold">FT</span>
+              <span className="text-accent-foreground font-bold">FT</span>
             </div>
-            <span className="font-bold text-foreground text-lg hidden sm:inline">FitsumTafese</span>
+            <span className="font-bold text-foreground text-lg hidden sm:inline">
+              FitsumTafese
+            </span>
           </div>
 
           {/* Desktop Links */}
@@ -40,7 +42,10 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <a href="#contact" className="px-6 py-2 bg-accent text-background font-semibold rounded-full hover:opacity-90 transition-opacity text-sm inline-block">
+            <a
+              href="#contact"
+              className="px-6 py-2 bg-accent text-accent-foreground font-semibold rounded-full hover:opacity-90 transition-opacity text-sm inline-block"
+            >
               Get in touch
             </a>
           </div>
@@ -67,7 +72,11 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
-            <a href="#contact" className="w-full px-6 py-2 bg-accent text-background font-semibold rounded-full hover:opacity-90 transition-opacity text-sm block text-center" onClick={() => setIsOpen(false)}>
+            <a
+              href="#contact"
+              className="w-full px-6 py-2 bg-accent text-accent-foreground font-semibold rounded-full hover:opacity-90 transition-opacity text-sm block text-center"
+              onClick={() => setIsOpen(false)}
+            >
               Get in touch
             </a>
           </div>

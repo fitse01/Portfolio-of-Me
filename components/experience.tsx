@@ -1,22 +1,24 @@
-'use client';
+"use client";
 
 const experiences = [
   {
     id: 1,
-    period: 'Jul 2025 — Present',
-    role: 'Co-Founder & Software Engineer',
-    company: 'Tigat Tech',
-    description: 'Leading product development and technical architecture for a digital innovation lab. Building scalable solutions and mentoring engineering teams.',
-    highlights: ['Technical Leadership', 'Product Strategy', 'Team Building']
+    period: "Jul 2025 — Present",
+    role: "Co-Founder & Software Engineer",
+    company: "Tigat Tech",
+    description:
+      "Leading product development and technical architecture for a digital innovation lab. Building scalable solutions and mentoring engineering teams.",
+    highlights: ["Technical Leadership", "Product Strategy", "Team Building"],
   },
   {
     id: 2,
-    period: 'Dec 2024 — Jun 2025',
-    role: 'Full Stack & Mobile Developer',
-    company: 'Evangadi Tech',
-    description: 'Developed full-stack applications using TypeScript, React, and Node.js. Implemented mobile solutions with React Native for cross-platform deployment.',
-    highlights: ['Full Stack Development', 'Mobile Development', 'API Design']
-  }
+    period: "Dec 2024 — Jun 2025",
+    role: "Full Stack & Mobile Developer",
+    company: "Evangadi Tech",
+    description:
+      "Developed full-stack applications using TypeScript, React, and Node.js. Implemented mobile solutions with React Native for cross-platform deployment.",
+    highlights: ["Full Stack Development", "Mobile Development", "API Design"],
+  },
 ];
 
 export function Experience() {
@@ -25,9 +27,12 @@ export function Experience() {
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
         <div className="space-y-12">
           <div className="space-y-4">
-            <h2 className="text-4xl lg:text-5xl font-bold text-foreground text-pretty">Experience</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground text-pretty">
+              Experience
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl">
-              Professional journey building innovative products and leading technical initiatives.
+              Professional journey building innovative products and leading
+              technical initiatives.
             </p>
           </div>
 
@@ -46,13 +51,13 @@ export function Experience() {
 
                   {/* Content */}
                   <div className="group">
-                    <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-1">
+                    <p className="text-sm font-semibold text-accent-foreground uppercase tracking-widest mb-1">
                       {exp.period}
                     </p>
                     <h3 className="text-2xl font-bold text-foreground mb-1">
                       {exp.role}
                     </h3>
-                    <p className="text-lg text-accent/80 font-semibold mb-3">
+                    <p className="text-lg text-accent-foreground/80 font-semibold mb-3">
                       @ {exp.company}
                     </p>
                     <p className="text-foreground/70 leading-relaxed mb-4">
@@ -62,7 +67,7 @@ export function Experience() {
                       {exp.highlights.map((highlight) => (
                         <span
                           key={highlight}
-                          className="px-3 py-1 text-sm font-medium rounded-full bg-accent/10 text-accent border border-accent/20"
+                          className="px-3 py-1 text-sm font-medium rounded-full bg-accent/10 text-accent-foreground border border-accent/20"
                         >
                           {highlight}
                         </span>

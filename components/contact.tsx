@@ -1,37 +1,57 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useRef } from "react";
+import { ArrowRight } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    service: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!formRef.current) return;
+
     setIsSubmitting(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', service: '', message: '' });
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    } catch {
-      setSubmitStatus('error');
-      setTimeout(() => setSubmitStatus('idle'), 3000);
+      // Credentials loaded from .env.local
+      const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+      const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+      const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
+      await emailjs.sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        formRef.current,
+        PUBLIC_KEY,
+      );
+
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setTimeout(() => setSubmitStatus("idle"), 5000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSubmitStatus("error");
+      setTimeout(() => setSubmitStatus("idle"), 5000);
     } finally {
       setIsSubmitting(false);
     }
@@ -39,51 +59,49 @@ export function Contact() {
 
   const socialLinks = [
     {
-      platform: 'X',
-      handle: '@fitse01',
-      href: 'https://twitter.com/fitse01',
+      platform: "X",
+      handle: "@fitse01",
+      href: "https://twitter.com/fitse01",
     },
     {
-      platform: 'LinkedIn',
-      handle: '@fitsum-tafese',
-      href: 'https://www.linkedin.com/in/fitsum-tafese-b2791a279/',
+      platform: "LinkedIn",
+      handle: "@fitsum-tafese",
+      href: "https://www.linkedin.com/in/fitsum-tafese-b2791a279/",
     },
     {
-      platform: 'GitHub',
-      handle: '@fitse01',
-      href: 'https://github.com/fitse01',
+      platform: "GitHub",
+      handle: "@fitse01",
+      href: "https://github.com/fitse01",
     },
     {
-      platform: 'Telegram',
-      handle: '@Fafina21',
-      href: 'https://t.me/Fafina21',
+      platform: "Telegram",
+      handle: "@Fafina21",
+      href: "https://t.me/Fafina21",
     },
   ];
 
   const inputBase =
-    'w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-white/30 transition-colors';
+    "w-full bg-transparent border border-white/10 rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-white/30 transition-colors";
 
   return (
     <section id="contact" className="py-20 bg-background">
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
-
         {/* Heading */}
         <div className="mb-14">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Let&apos;s work together
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl">
-            Have a project in mind? I&apos;d love to hear about it and discuss how we can bring
-            your ideas to life.
+            Have a project in mind? I&apos;d love to hear about it and discuss
+            how we can bring your ideas to life.
           </p>
         </div>
 
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-
           {/* LEFT — Contact Form */}
           <div className="border border-white/10 rounded-2xl p-8 bg-white/[0.02]">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <input
                 type="text"
                 name="name"
@@ -104,29 +122,16 @@ export function Contact() {
                 className={inputBase}
               />
 
-              {/* Service select */}
-              <div className="relative">
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className={`${inputBase} appearance-none pr-10 cursor-pointer ${
-                    formData.service === '' ? 'text-muted-foreground/50' : 'text-foreground'
-                  }`}
-                >
-                  <option value="" disabled hidden>Select a service</option>
-                  <option value="web">Web Development</option>
-                  <option value="mobile">Mobile App</option>
-                  <option value="ui">UI/UX Design</option>
-                  <option value="consulting">Consulting</option>
-                </select>
-                {/* Chevron icon */}
-                <div className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/50">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M3 5l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              </div>
+              {/* Subject input field */}
+              <input
+                type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                placeholder="Subject"
+                className={inputBase}
+              />
 
               <textarea
                 name="message"
@@ -134,7 +139,7 @@ export function Contact() {
                 onChange={handleChange}
                 required
                 rows={5}
-                placeholder="Tell me about your project..."
+                placeholder="Message"
                 className={`${inputBase} resize-none`}
               />
 
@@ -143,15 +148,15 @@ export function Contact() {
                 disabled={isSubmitting}
                 className="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 text-foreground text-sm font-medium transition-all duration-300 disabled:opacity-50"
               >
-                {isSubmitting ? 'Sending…' : 'Send Message'}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
 
-              {submitStatus === 'success' && (
+              {submitStatus === "success" && (
                 <p className="text-green-400 text-sm">
                   Message sent! I&apos;ll get back to you soon.
                 </p>
               )}
-              {submitStatus === 'error' && (
+              {submitStatus === "error" && (
                 <p className="text-red-400 text-sm">
                   Something went wrong. Please try again.
                 </p>
@@ -161,7 +166,6 @@ export function Contact() {
 
           {/* RIGHT — Email + Social grid */}
           <div className="flex flex-col gap-10">
-
             {/* Clickable email */}
             <a
               href="mailto:fitsumtafese01@gmail.com"

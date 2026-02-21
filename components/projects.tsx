@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
-import { getAllProjects } from '@/lib/projects-data';
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
+import { getAllProjects } from "@/lib/projects-data";
 
 export function Projects() {
   const projects = getAllProjects();
@@ -11,10 +11,11 @@ export function Projects() {
   return (
     <section className="py-20 bg-background">
       <div className="max-w-6xl mx-auto px-6 lg:px-12">
-
         {/* Header */}
         <div className="flex items-end justify-between mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground">Projects</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground">
+            Projects
+          </h2>
           <span className="hidden md:block text-sm font-semibold text-muted-foreground uppercase tracking-widest">
             Selected Work
           </span>
@@ -34,10 +35,9 @@ export function Projects() {
               </div>
 
               <div className="flex flex-col md:flex-row items-start gap-8 py-10 group-hover:bg-accent/[0.03] transition-colors duration-300 rounded-xl px-2">
-                
                 {/* Project Number */}
-                <span className="hidden md:block text-xs font-mono text-muted-foreground/50 pt-1 w-8 shrink-0 select-none">
-                  {String(index + 1).padStart(2, '0')}
+                <span className="hidden md:block text-xs font-mono text-white/20 pt-1 w-8 shrink-0 select-none">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
 
                 {/* Thumbnail */}
