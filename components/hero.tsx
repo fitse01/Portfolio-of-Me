@@ -71,7 +71,7 @@ export function Hero() {
             {/* Image container */}
             <div className="relative w-full h-full rounded-2xl overflow-hidden bg-secondary shadow-2xl">
               <Image
-                src="/fitse.JPG"
+                src="/fitsum-tafese.jpg"
                 alt="Professional developer"
                 fill
                 className="object-cover"
