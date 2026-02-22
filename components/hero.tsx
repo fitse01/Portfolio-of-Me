@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="min-h-screen bg-background flex items-center relative overflow-hidden">
+    <section className="min-h-screen bg-background flex items-center relative overflow-hidden max-sm:py-10">
       {/* Gradient background accent */}
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -18,7 +18,7 @@ export function Hero() {
         ></div>
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative w-full max-w-6xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center sm:pt-40">
         {/* Left Content */}
         <div className="flex flex-col gap-8 z-10">
           <div className="space-y-4">
@@ -37,13 +37,13 @@ export function Hero() {
 
           <div className="flex gap-4">
             <Link href="#contact">
-              <button className="px-8 py-3 bg-accent text-accent-foreground font-semibold rounded-full hover:opacity-90 transition-opacity flex items-center gap-2 group">
+              <button className="px-8  py-3 max-sm:px-4 max-sm:py-2 bg-accent text-accent-foreground font-semibold rounded-full hover:opacity-90 transition-opacity flex items-center gap-2 group">
                 Get in touch
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
             <Link href="#projects">
-              <button className="px-8 py-3 border border-accent text-accent-foreground font-semibold rounded-full hover:bg-accent/10 transition-colors">
+              <button className="px-8 py-3 max-sm:px-4 max-sm:py-2 border border-accent text-accent-foreground font-semibold rounded-full hover:bg-accent/10 transition-colors">
                 View work
               </button>
             </Link>

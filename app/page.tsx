@@ -1,12 +1,12 @@
-import { Navbar } from '@/components/navbar';
-import { Hero } from '@/components/hero';
-import { Experience } from '@/components/experience';
-import { About } from '@/components/about';
-import { Projects } from '@/components/projects';
-import { Skills } from '@/components/skills';
-import { Testimonials } from '@/components/testimonials';
-import { Contact } from '@/components/contact';
-import { Footer } from '@/components/footer';
+import { Navbar } from "@/components/navbar";
+import { Hero } from "@/components/hero";
+import { Experience } from "@/components/experience";
+import { About } from "@/components/about";
+import { Projects } from "@/components/projects";
+import { Skills } from "@/components/skills";
+import { Testimonials } from "@/components/testimonials";
+import { Contact } from "@/components/contact";
+import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
@@ -19,7 +19,7 @@ export default function Home() {
         <div id="projects">
           <Projects />
         </div>
-        <Skills />
+        {/* <Skills /> */}
         <Testimonials />
         <Contact />
         <Footer />

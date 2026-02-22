@@ -12,7 +12,7 @@ export function About() {
           </div>
 
           <div className="space-y-6">
-            <p className="text-lg text-foreground/70 leading-relaxed">
+            <p className="text-lg  text-foreground/70 leading-relaxed">
               I am a Full-Stack Developer dedicated to building scalable
               products that solve real-world problems. With expertise in
               TypeScript, React, and Node.js, I combine technical rigor with a
